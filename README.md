@@ -31,7 +31,7 @@
   - truncate -s 2048 key.txt
 
 6) Combine key and SquashFS with ISO (SquashFS is already padded to 4096 bytes)
-  - cat key.txt private.sqfs >> output.iso
+  - cat input.iso key.txt private.sqfs >> output.iso
 
 7) use fdisk -w never output.iso
   - use "c" to enable old-DOS partition (support less than 1MB size)
