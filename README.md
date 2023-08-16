@@ -17,7 +17,7 @@
 2) If it is bootable iso, make it hybid iso with MBR (if it is not already)
 
 3) Create GPG key, use strong password
-  - echo "some random key, can be used also from /dev/urandom" | gpg -q -c > key.txt
+  - echo "some random key, can be used also from /dev/urandom" | gpg --armor -q -c > key.txt
 
 4) create SquashFS, which will be encrypted
   - mksquashfs private/ private.sqfs -all-root
@@ -27,7 +27,7 @@
   - gpg -q -d testenc/key.txt | cryptsetup reencrypt --key-file=- --encrypt --type luks2 --resilience none --disable-locks --reduce-device-size=8M private.sqfs
   - truncate -s -4M private.sqfs
 
-6) resize key to 2048 bytes
+6) resize key to atleast 2048 bytes (or pad it to nearest 2048 size)
   - truncate -s 2048 key.txt
 
 6) Combine key and SquashFS with ISO (SquashFS is already padded to 4096 bytes)
