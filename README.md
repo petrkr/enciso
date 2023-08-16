@@ -54,3 +54,9 @@ OPTIONAL: Check ISO in some virtual environment
 
 4) Mount encrypted mapper device
   - mount /dev/mapper/private /mnt/private
+
+
+### Troubleshoot
+
+Q: GPG says gpg: public key decryption failed: Inappropriate ioctl for device
+A: try do `export GPG_TTY=$(tty)`
